@@ -36,25 +36,27 @@
             // 
             // CancelButton
             // 
-            this.CancelButton.Location = new System.Drawing.Point(269, 166);
+            this.CancelButton.Location = new System.Drawing.Point(269, 159);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(270, 23);
             this.CancelButton.TabIndex = 1;
             this.CancelButton.Text = "Cancel";
             this.CancelButton.UseVisualStyleBackColor = true;
+            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // SaveButton
             // 
-            this.SaveButton.Location = new System.Drawing.Point(12, 166);
+            this.SaveButton.Location = new System.Drawing.Point(12, 159);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(251, 23);
             this.SaveButton.TabIndex = 2;
             this.SaveButton.Text = "Save";
             this.SaveButton.UseVisualStyleBackColor = true;
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // PresetNameTextBox
             // 
-            this.PresetNameTextBox.Location = new System.Drawing.Point(197, 12);
+            this.PresetNameTextBox.Location = new System.Drawing.Point(197, 9);
             this.PresetNameTextBox.Name = "PresetNameTextBox";
             this.PresetNameTextBox.Size = new System.Drawing.Size(343, 20);
             this.PresetNameTextBox.TabIndex = 3;
@@ -73,7 +75,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(551, 201);
+            this.ClientSize = new System.Drawing.Size(551, 194);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.PresetNameTextBox);
             this.Controls.Add(this.SaveButton);

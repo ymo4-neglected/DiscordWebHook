@@ -78,6 +78,8 @@
             this.UserRadioButton = new System.Windows.Forms.RadioButton();
             this.label6 = new System.Windows.Forms.Label();
             this.UserIdTextBox = new System.Windows.Forms.TextBox();
+            this.SelectButton = new System.Windows.Forms.Button();
+            this.DeleteThisPresetButton = new System.Windows.Forms.Button();
             this.EmbedGroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.AuthorGroupBox.SuspendLayout();
@@ -234,7 +236,7 @@
             this.WebHookComboBox.FormattingEnabled = true;
             this.WebHookComboBox.Location = new System.Drawing.Point(163, 11);
             this.WebHookComboBox.Name = "WebHookComboBox";
-            this.WebHookComboBox.Size = new System.Drawing.Size(578, 21);
+            this.WebHookComboBox.Size = new System.Drawing.Size(369, 21);
             this.WebHookComboBox.TabIndex = 5;
             // 
             // groupBox1
@@ -481,7 +483,7 @@
             // 
             // ChannelIdTextBox
             // 
-            this.ChannelIdTextBox.Location = new System.Drawing.Point(196, 103);
+            this.ChannelIdTextBox.Location = new System.Drawing.Point(196, 86);
             this.ChannelIdTextBox.Name = "ChannelIdTextBox";
             this.ChannelIdTextBox.Size = new System.Drawing.Size(545, 20);
             this.ChannelIdTextBox.TabIndex = 17;
@@ -489,7 +491,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(130, 106);
+            this.label15.Location = new System.Drawing.Point(130, 89);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(60, 13);
             this.label15.TabIndex = 20;
@@ -511,12 +513,13 @@
             this.TokenTextBox.Name = "TokenTextBox";
             this.TokenTextBox.Size = new System.Drawing.Size(578, 20);
             this.TokenTextBox.TabIndex = 22;
+            this.TokenTextBox.TextChanged += new System.EventHandler(this.tokenChanged);
             // 
             // GuildChannelRadioButton
             // 
             this.GuildChannelRadioButton.AutoSize = true;
             this.GuildChannelRadioButton.Checked = true;
-            this.GuildChannelRadioButton.Location = new System.Drawing.Point(3, 23);
+            this.GuildChannelRadioButton.Location = new System.Drawing.Point(3, 3);
             this.GuildChannelRadioButton.Name = "GuildChannelRadioButton";
             this.GuildChannelRadioButton.Size = new System.Drawing.Size(112, 17);
             this.GuildChannelRadioButton.TabIndex = 24;
@@ -531,13 +534,13 @@
             this.DmGuildPanel.Controls.Add(this.UserRadioButton);
             this.DmGuildPanel.Location = new System.Drawing.Point(12, 83);
             this.DmGuildPanel.Name = "DmGuildPanel";
-            this.DmGuildPanel.Size = new System.Drawing.Size(114, 62);
+            this.DmGuildPanel.Size = new System.Drawing.Size(114, 45);
             this.DmGuildPanel.TabIndex = 26;
             // 
             // UserRadioButton
             // 
             this.UserRadioButton.AutoSize = true;
-            this.UserRadioButton.Location = new System.Drawing.Point(3, 44);
+            this.UserRadioButton.Location = new System.Drawing.Point(3, 24);
             this.UserRadioButton.Name = "UserRadioButton";
             this.UserRadioButton.Size = new System.Drawing.Size(47, 17);
             this.UserRadioButton.TabIndex = 25;
@@ -548,7 +551,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(130, 128);
+            this.label6.Location = new System.Drawing.Point(130, 111);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(44, 13);
             this.label6.TabIndex = 28;
@@ -556,16 +559,38 @@
             // 
             // UserIdTextBox
             // 
-            this.UserIdTextBox.Location = new System.Drawing.Point(196, 125);
+            this.UserIdTextBox.Location = new System.Drawing.Point(196, 108);
             this.UserIdTextBox.Name = "UserIdTextBox";
             this.UserIdTextBox.Size = new System.Drawing.Size(545, 20);
             this.UserIdTextBox.TabIndex = 27;
+            // 
+            // SelectButton
+            // 
+            this.SelectButton.Location = new System.Drawing.Point(647, 9);
+            this.SelectButton.Name = "SelectButton";
+            this.SelectButton.Size = new System.Drawing.Size(95, 23);
+            this.SelectButton.TabIndex = 29;
+            this.SelectButton.Text = "Выбрать";
+            this.SelectButton.UseVisualStyleBackColor = true;
+            this.SelectButton.Click += new System.EventHandler(this.SelectButton_Click);
+            // 
+            // DeleteThisPresetButton
+            // 
+            this.DeleteThisPresetButton.Location = new System.Drawing.Point(538, 9);
+            this.DeleteThisPresetButton.Name = "DeleteThisPresetButton";
+            this.DeleteThisPresetButton.Size = new System.Drawing.Size(103, 23);
+            this.DeleteThisPresetButton.TabIndex = 30;
+            this.DeleteThisPresetButton.Text = "Delete this preset";
+            this.DeleteThisPresetButton.UseVisualStyleBackColor = true;
+            this.DeleteThisPresetButton.Click += new System.EventHandler(this.DeleteThisPresetButton_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1257, 589);
+            this.Controls.Add(this.DeleteThisPresetButton);
+            this.Controls.Add(this.SelectButton);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.UserIdTextBox);
             this.Controls.Add(this.TokenTextBox);
@@ -583,6 +608,7 @@
             this.Controls.Add(this.SendButton);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.DmGuildPanel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Form1";
@@ -607,56 +633,58 @@
 
         #endregion
 
-        private System.Windows.Forms.Button SendButton;
-        private System.Windows.Forms.GroupBox EmbedGroupBox;
-        private System.Windows.Forms.CheckBox EmbedEnabled;
-        private System.Windows.Forms.RadioButton ChooseWebHookRadioBtn;
-        private System.Windows.Forms.RadioButton InputWebHookRadioBtn;
-        private System.Windows.Forms.TextBox InputWebHookTextBox;
-        private System.Windows.Forms.ComboBox WebHookComboBox;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox DescriptionTextBox;
-        private System.Windows.Forms.TextBox NameTextBox;
-        private System.Windows.Forms.GroupBox AuthorGroupBox;
-        private System.Windows.Forms.Button ColorChangeBtn;
-        private System.Windows.Forms.Label ColorLabel;
-        private System.Windows.Forms.TextBox ImageUrl;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.CheckBox AuthorEnabled;
-        private System.Windows.Forms.GroupBox FooterGroupBox;
-        private System.Windows.Forms.CheckBox FooterEnabled;
-        private System.Windows.Forms.ColorDialog colorDialog1;
-        private System.Windows.Forms.Button SavePresetToConfigButton;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox AvatarTextBox;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox TextTextBox;
-        private System.Windows.Forms.TextBox EmbedNameTextBox;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox AuthorUrlTextBox;
-        private System.Windows.Forms.TextBox AuthorText;
-        private System.Windows.Forms.TextBox AuthorIconUrlTextBox;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox FooterText;
-        private System.Windows.Forms.TextBox FooterIconUrl;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.ComboBox PresetComboBox;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.RadioButton InputTokenRadioButton;
-        private System.Windows.Forms.TextBox ChannelIdTextBox;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox TokenTextBox;
-        private System.Windows.Forms.RadioButton GuildChannelRadioButton;
-        private System.Windows.Forms.Panel DmGuildPanel;
-        private System.Windows.Forms.RadioButton UserRadioButton;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox UserIdTextBox;
+        public System.Windows.Forms.Button SendButton;
+        public System.Windows.Forms.GroupBox EmbedGroupBox;
+        public System.Windows.Forms.CheckBox EmbedEnabled;
+        public System.Windows.Forms.RadioButton ChooseWebHookRadioBtn;
+        public System.Windows.Forms.RadioButton InputWebHookRadioBtn;
+        public System.Windows.Forms.TextBox InputWebHookTextBox;
+        public System.Windows.Forms.ComboBox WebHookComboBox;
+        public System.Windows.Forms.GroupBox groupBox1;
+        public System.Windows.Forms.Label label1;
+        public System.Windows.Forms.TextBox DescriptionTextBox;
+        public System.Windows.Forms.TextBox NameTextBox;
+        public System.Windows.Forms.GroupBox AuthorGroupBox;
+        public System.Windows.Forms.Button ColorChangeBtn;
+        public System.Windows.Forms.Label ColorLabel;
+        public System.Windows.Forms.TextBox ImageUrl;
+        public System.Windows.Forms.Label label4;
+        public System.Windows.Forms.Label label3;
+        public System.Windows.Forms.CheckBox AuthorEnabled;
+        public System.Windows.Forms.GroupBox FooterGroupBox;
+        public System.Windows.Forms.CheckBox FooterEnabled;
+        public System.Windows.Forms.ColorDialog colorDialog1;
+        public System.Windows.Forms.Button SavePresetToConfigButton;
+        public System.Windows.Forms.Label label2;
+        public System.Windows.Forms.TextBox AvatarTextBox;
+        public System.Windows.Forms.Label label5;
+        public System.Windows.Forms.TextBox TextTextBox;
+        public System.Windows.Forms.TextBox EmbedNameTextBox;
+        public System.Windows.Forms.Label label7;
+        public System.Windows.Forms.TextBox AuthorUrlTextBox;
+        public System.Windows.Forms.TextBox AuthorText;
+        public System.Windows.Forms.TextBox AuthorIconUrlTextBox;
+        public System.Windows.Forms.Label label10;
+        public System.Windows.Forms.Label label9;
+        public System.Windows.Forms.Label label8;
+        public System.Windows.Forms.TextBox FooterText;
+        public System.Windows.Forms.TextBox FooterIconUrl;
+        public System.Windows.Forms.Label label13;
+        public System.Windows.Forms.Label label12;
+        public System.Windows.Forms.ComboBox PresetComboBox;
+        public System.Windows.Forms.Label label11;
+        public System.Windows.Forms.RadioButton InputTokenRadioButton;
+        public System.Windows.Forms.TextBox ChannelIdTextBox;
+        public System.Windows.Forms.Label label15;
+        public System.Windows.Forms.Panel panel1;
+        public System.Windows.Forms.TextBox TokenTextBox;
+        public System.Windows.Forms.RadioButton GuildChannelRadioButton;
+        public System.Windows.Forms.Panel DmGuildPanel;
+        public System.Windows.Forms.RadioButton UserRadioButton;
+        public System.Windows.Forms.Label label6;
+        public System.Windows.Forms.TextBox UserIdTextBox;
+        public System.Windows.Forms.Button SelectButton;
+        public System.Windows.Forms.Button DeleteThisPresetButton;
     }
 }
 
